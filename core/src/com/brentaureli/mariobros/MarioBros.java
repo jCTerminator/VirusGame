@@ -76,6 +76,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.brentaureli.mariobros.Screens.PlayScreen;
 
 public class MarioBros extends Game {
 	public static final int V_WIDTH = 400;
@@ -102,26 +103,21 @@ public class MarioBros extends Game {
 	We will use it in the static context to save time for now. */
 	public static AssetManager manager;
 
-	Texture img;
+	//Texture img;
 
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+		setScreen(new PlayScreen(this));
 	}
 
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor(1, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
-		batch.draw(img, 0, 0);
-		batch.end();
+		super.render();
 	}
 
 	@Override
 	public void dispose () {
 		batch.dispose();
-		img.dispose();
 	}
 }
