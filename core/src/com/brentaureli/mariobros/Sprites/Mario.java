@@ -1,5 +1,6 @@
-//package com.brentaureli.mariobros.Sprites;
-//
+package com.brentaureli.mariobros.Sprites;
+
+
 //import com.badlogic.gdx.audio.Music;
 //import com.badlogic.gdx.audio.Sound;
 //import com.badlogic.gdx.graphics.g2d.Animation;
@@ -24,6 +25,39 @@
 ///**
 // * Created by brentaureli on 8/27/15.
 // */
+
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.World;
+import com.brentaureli.mariobros.MarioBros;
+
+public class Mario extends Sprite {
+    public World world;
+    public Body b2dbody;
+
+    public Mario(World world){
+        this.world = world;
+        defineMario();
+    }
+
+    public void defineMario() {
+        BodyDef bdef = new BodyDef();
+        bdef.position.set(32 / MarioBros.PPM, 32 / MarioBros.PPM);
+        bdef.type = BodyDef.BodyType.DynamicBody;
+        b2dbody = world.createBody(bdef);
+
+        FixtureDef fdef = new FixtureDef();
+        CircleShape shape = new CircleShape();
+        shape.setRadius(5 / MarioBros.PPM);
+
+        fdef.shape = shape;
+        b2dbody.createFixture(fdef);
+    }
+
+}
 //public class Mario extends Sprite {
 //    public enum State { FALLING, JUMPING, STANDING, RUNNING, GROWING, DEAD };
 //    public State currentState;
