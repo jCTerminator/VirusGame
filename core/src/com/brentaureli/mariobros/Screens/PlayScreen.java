@@ -28,6 +28,7 @@ import com.brentaureli.mariobros.MarioBros;
 import com.brentaureli.mariobros.Scenes.Hud;
 import com.brentaureli.mariobros.Sprites.Mario;
 import com.brentaureli.mariobros.Tools.B2WorldCreator;
+import com.brentaureli.mariobros.Tools.WorldContactListener;
 
 public class PlayScreen implements Screen {
     private MarioBros game;
@@ -62,6 +63,7 @@ public class PlayScreen implements Screen {
         new B2WorldCreator(world, map);
         player = new Mario(world, this);
 
+        world.setContactListener(new WorldContactListener());
     }
 
     public TextureAtlas getAtlas() {
