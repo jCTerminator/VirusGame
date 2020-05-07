@@ -27,6 +27,7 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.brentaureli.mariobros.MarioBros;
 import com.brentaureli.mariobros.Scenes.Hud;
+import com.brentaureli.mariobros.Sprites.Enemies.Goomba;
 import com.brentaureli.mariobros.Sprites.Mario;
 import com.brentaureli.mariobros.Tools.B2WorldCreator;
 import com.brentaureli.mariobros.Tools.WorldContactListener;
@@ -38,6 +39,7 @@ public class PlayScreen implements Screen {
     private Viewport gamePort;
     private Hud hud;
     private Mario player;
+    private Goomba goomba;
     private Music music;
 
     private TmxMapLoader maploader;
@@ -62,14 +64,16 @@ public class PlayScreen implements Screen {
 
         world = new World(new Vector2(0, -10), true);
         b2dr = new Box2DDebugRenderer();
-        new B2WorldCreator(world, map);
-        player = new Mario(world, this);
+        new B2WorldCreator(this);
+        player = new Mario(this);
 
         world.setContactListener(new WorldContactListener());
 
         music = MarioBros.manager.get("audio/music/mario_music.ogg", Music.class);
         music.setLooping(true);
         music.play();
+
+        goomba = new Goomba(this, .32f, .32f);
     }
 
     public TextureAtlas getAtlas() {
@@ -94,6 +98,7 @@ public class PlayScreen implements Screen {
 
         world.step(1/60f, 6, 2);
         player.update(dt);
+        goomba.update(dt);
         hud.update(dt);
 
         gamecam.position.x = player.b2dbody.getPosition().x;
@@ -113,6 +118,7 @@ public class PlayScreen implements Screen {
         game.batch.setProjectionMatrix(gamecam.combined);
         game.batch.begin();
         player.draw(game.batch);
+        goomba.draw(game.batch);
         game.batch.end();
 
         game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
@@ -123,6 +129,14 @@ public class PlayScreen implements Screen {
     public void resize(int width, int height) {
         gamePort.update(width, height);
 
+    }
+
+    public TiledMap getMap() {
+        return map;
+    }
+
+    public World getWorld() {
+        return world;
     }
 
     @Override
