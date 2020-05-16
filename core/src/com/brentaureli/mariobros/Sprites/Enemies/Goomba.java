@@ -21,8 +21,8 @@ import com.brentaureli.mariobros.Sprites.Enemies.Enemy;
 
 public class Goomba extends Enemy{
     private float stateTime;
-    private Animation<TextureRegion> walkAnimation;
     private Array<TextureRegion> frames;
+    private Animation<TextureRegion> walkAnimation;
 
     public Goomba(PlayScreen screen, float x, float y) {
             super(screen, x, y);
@@ -36,14 +36,14 @@ public class Goomba extends Enemy{
 
     public void update(float dt){
         stateTime += dt;
-        setPosition(b2dbody.getPosition().x- getWidth() /2 , b2dbody.getPosition().y = getHeight() /2);
-        setRegion(walkAnimation.getKeyFrame(stateTime));
+        setPosition(b2dbody.getPosition().x - getWidth() /2 , b2dbody.getPosition().y - getHeight() /2);
+        setRegion(walkAnimation.getKeyFrame(stateTime, true));
     }
 
     @Override
     protected void defineEnemy() {
         BodyDef bdef = new BodyDef();
-        bdef.position.set(32 / MarioBros.PPM, 32 / MarioBros.PPM);
+        bdef.position.set(64 / MarioBros.PPM, 64 / MarioBros.PPM);
         bdef.type = BodyDef.BodyType.DynamicBody;
         b2dbody = world.createBody(bdef);
 
@@ -51,7 +51,7 @@ public class Goomba extends Enemy{
         CircleShape shape = new CircleShape();
         shape.setRadius(6 / MarioBros.PPM);
         fdef.filter.categoryBits = MarioBros.ENEMY_BIT;
-        fdef.filter.maskBits = MarioBros.GROUND_BIT | MarioBros.COIN_BIT | MarioBros.BRICK_BIT | MarioBros.ENEMY_BIT | MarioBros.OBJECT_BIT;
+        fdef.filter.maskBits = MarioBros.GROUND_BIT | MarioBros.COIN_BIT | MarioBros.BRICK_BIT | MarioBros.ENEMY_BIT | MarioBros.OBJECT_BIT | MarioBros.MARIO_BIT;
 
         fdef.shape = shape;
         b2dbody.createFixture(fdef);
