@@ -132,7 +132,6 @@ public class Mario extends Sprite {
         bdef.position.set(32 / MarioBros.PPM, 32 / MarioBros.PPM);
         bdef.type = BodyDef.BodyType.DynamicBody;
         b2dbody = world.createBody(bdef);
-
         FixtureDef fdef = new FixtureDef();
         CircleShape shape = new CircleShape();
         shape.setRadius(6 / MarioBros.PPM);

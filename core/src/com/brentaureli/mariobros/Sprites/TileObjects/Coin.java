@@ -6,6 +6,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
@@ -14,6 +15,8 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.brentaureli.mariobros.MarioBros;
 import com.brentaureli.mariobros.Scenes.Hud;
 import com.brentaureli.mariobros.Screens.PlayScreen;
+import com.brentaureli.mariobros.Sprites.Items.ItemDef;
+import com.brentaureli.mariobros.Sprites.Items.Mushroom;
 
 public class Coin extends InteractiveTileObject{
     private static TiledMapTileSet tileSet;
@@ -27,11 +30,13 @@ public class Coin extends InteractiveTileObject{
 
     @Override
     public void onHeadHit() {
-        Gdx.app.log("Coin", "Collosion");
+        Gdx.app.log("Coin", "Collision");
         if(getCell().getTile().getId() == BLANK_COIN)
             MarioBros.manager.get("audio/sounds/bump.wav", Sound.class).play();
-        else
+        else {
             MarioBros.manager.get("audio/sounds/coin.wav", Sound.class).play();
+            screen.spawnItem(new ItemDef(new Vector2(body.getPosition().x, body.getPosition().y + 16 / MarioBros.PPM), Mushroom.class)); //check if errors
+        }
         getCell().setTile(tileSet.getTile(BLANK_COIN));
         Hud.addScore(500);
     }
