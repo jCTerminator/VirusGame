@@ -18,6 +18,7 @@ import com.brentaureli.mariobros.Scenes.Hud;
 import com.brentaureli.mariobros.Screens.PlayScreen;
 import com.brentaureli.mariobros.Sprites.Items.ItemDef;
 import com.brentaureli.mariobros.Sprites.Items.Mushroom;
+import com.brentaureli.mariobros.Sprites.Mario;
 
 public class Coin extends InteractiveTileObject{
     private static TiledMapTileSet tileSet;
@@ -30,15 +31,17 @@ public class Coin extends InteractiveTileObject{
     }
 
     @Override
-    public void onHeadHit() {
+    public void onHeadHit(Mario mario) {
         Gdx.app.log("Coin", "Collision");
         if(getCell().getTile().getId() == BLANK_COIN)
             MarioBros.manager.get("audio/sounds/bump.wav", Sound.class).play();
         else {
-            MarioBros.manager.get("audio/sounds/coin.wav", Sound.class).play();
             if(object.getProperties().containsKey("mushroom")) {
                 screen.spawnItem(new ItemDef(new Vector2(body.getPosition().x, body.getPosition().y + 16 / MarioBros.PPM), Mushroom.class)); //check if errors
+                MarioBros.manager.load("audio/sounds/powerup_spawn.wav", Sound.class);
             }
+            else
+                MarioBros.manager.get("audio/sounds/coin.wav", Sound.class).play();
         }
         getCell().setTile(tileSet.getTile(BLANK_COIN));
         Hud.addScore(500);

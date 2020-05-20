@@ -10,6 +10,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.brentaureli.mariobros.MarioBros;
 import com.brentaureli.mariobros.Scenes.Hud;
 import com.brentaureli.mariobros.Screens.PlayScreen;
+import com.brentaureli.mariobros.Sprites.Mario;
 
 public class Brick extends InteractiveTileObject {
     public Brick(PlayScreen screen, MapObject object){
@@ -19,12 +20,14 @@ public class Brick extends InteractiveTileObject {
     }
 
     @Override
-    public void onHeadHit() {
-        Gdx.app.log("Brick", "Collosion");
-        setCategoryFilter(MarioBros.DESTROYED_BIT);
-        getCell().setTile(null);
-        Hud.addScore(200);
-        MarioBros.manager. get("audio/sounds/breakblock.wav", Sound.class).play();
+    public void onHeadHit(Mario mario) {
+        if (mario.isBig()) {
+            setCategoryFilter(MarioBros.DESTROYED_BIT);
+            getCell().setTile(null);
+            Hud.addScore(200);
+            MarioBros.manager.get("audio/sounds/breakblock.wav", Sound.class).play();
+        }
+        MarioBros.manager.get("audio/sounds/bump.wav", Sound.class).play();
     }
 }
 //import com.badlogic.gdx.audio.Sound;
