@@ -49,7 +49,7 @@ public class PlayScreen implements Screen {
     private Mario player;
     private Music music;
     private Array<Item> items;
-    private PriorityQueue<ItemDef> itemsToSpawn;
+    private LinkedBlockingQueue<ItemDef> itemsToSpawn;
 
     private TmxMapLoader maploader;
     private TiledMap map;
@@ -84,7 +84,7 @@ public class PlayScreen implements Screen {
         music.play();
 
         items = new Array<Item>();
-        itemsToSpawn = new PriorityQueue<ItemDef>();
+        itemsToSpawn = new LinkedBlockingQueue<ItemDef>();
 
     }
 
