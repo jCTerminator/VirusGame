@@ -1,5 +1,6 @@
 package com.brentaureli.mariobros.Screens;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
@@ -109,13 +110,19 @@ public class PlayScreen implements Screen {
 
     }
 
-    public void handleInput(float dt){
-        if(Gdx.input.isKeyJustPressed(Input.Keys.UP))
-            player.b2dbody.applyLinearImpulse(new Vector2(0, 4f), player.b2dbody.getWorldCenter(), true);
-        if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT) && player.b2dbody.getLinearVelocity().x <= 2)
-            player.b2dbody.applyLinearImpulse(new Vector2(2f,0), player.b2dbody.getWorldCenter(), true);
-        if(Gdx.input.isKeyJustPressed(Input.Keys.LEFT) && player.b2dbody.getLinearVelocity().x >= -2)
-            player.b2dbody.applyLinearImpulse(new Vector2(-2f,0), player.b2dbody.getWorldCenter(), true);
+    public void handleInput(float dt) {
+        if (player.currentState != Mario.State.DEAD) {
+            if (Gdx.input.isKeyJustPressed(Input.Keys.UP))
+                player.b2dbody.applyLinearImpulse(new Vector2(0, 4f), player.b2dbody.getWorldCenter(), true);
+            if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT) && player.b2dbody.getLinearVelocity().x <= 2)
+                player.b2dbody.applyLinearImpulse(new Vector2(2f, 0), player.b2dbody.getWorldCenter(), true);
+            if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT) && player.b2dbody.getLinearVelocity().x >= -2)
+                player.b2dbody.applyLinearImpulse(new Vector2(-2f, 0), player.b2dbody.getWorldCenter(), true);
+        }
+    }
+
+    public void checkGameOver(){
+
     }
 
     public void update(float dt){
@@ -135,7 +142,11 @@ public class PlayScreen implements Screen {
 
         hud.update(dt);
 
-        gamecam.position.x = player.b2dbody.getPosition().x;
+        if(player.currentState != Mario.State.DEAD) {
+            gamecam.position.x = player.b2dbody.getPosition().x;
+        }
+
+        //gamecam.position.x = player.b2dbody.getPosition().x;
         gamecam.update();
         renderer.setView(gamecam);
     }
@@ -160,6 +171,18 @@ public class PlayScreen implements Screen {
 
         game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
         hud.stage.draw();
+
+        if(gameOver()){
+            game.setScreen(new GameOverScreen(game));
+            dispose();
+        }
+    }
+
+    public boolean gameOver(){
+        if(player.currentState == Mario.State.DEAD && player.getStateTimer() > 3){
+            return true;
+        }
+        return false;
     }
 
     @Override
