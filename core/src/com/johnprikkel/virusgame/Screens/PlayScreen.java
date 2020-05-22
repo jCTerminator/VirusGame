@@ -40,7 +40,7 @@ public class PlayScreen implements Screen {
     private com.johnprikkel.virusgame.Tools.B2WorldCreator creator;
 
     public PlayScreen(LumberjackDef game) {
-        atlas = new TextureAtlas("gamesprites.pack");
+        atlas = new TextureAtlas("gamespritesv2.pack");
         this.game = game;
         gamecam = new OrthographicCamera();
         gamePort = new FitViewport(LumberjackDef.V_WIDTH / LumberjackDef.PPM, LumberjackDef.V_HEIGHT / LumberjackDef.PPM, gamecam);

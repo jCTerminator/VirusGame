@@ -1,0 +1,66 @@
+
+gamespritesv2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+virus
+  rotate: false
+  xy: 1, 35
+  size: 828, 68
+  orig: 828, 68
+  offset: 0, 0
+  index: -1
+lumberjack
+  rotate: false
+  xy: 1, 1
+  size: 336, 32
+  orig: 336, 32
+  offset: 0, 0
+  index: -1
+
+gamespritesv22.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+newer/big_mario
+  rotate: false
+  xy: 1, 29
+  size: 336, 32
+  orig: 336, 32
+  offset: 0, 0
+  index: -1
+newer/little_mario
+  rotate: false
+  xy: 1, 11
+  size: 224, 16
+  orig: 224, 16
+  offset: 0, 0
+  index: -1
+newer/turtle
+  rotate: false
+  xy: 339, 37
+  size: 96, 24
+  orig: 96, 24
+  offset: 0, 0
+  index: -1
+newer/goomba
+  rotate: false
+  xy: 227, 11
+  size: 48, 16
+  orig: 48, 16
+  offset: 0, 0
+  index: -1
+newer/fireball
+  rotate: false
+  xy: 1, 1
+  size: 32, 8
+  orig: 32, 8
+  offset: 0, 0
+  index: -1
+newer/mushroom
+  rotate: false
+  xy: 437, 45
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1

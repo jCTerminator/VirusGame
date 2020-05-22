@@ -63,7 +63,7 @@ public class Lumberjack extends Sprite {
     }
 
     public void update(float dt){
-        setPosition(b2dbody.getPosition().x - getWidth() / 2, b2dbody.getPosition().y - getHeight() / 2);
+        setPosition(b2dbody.getPosition().x - getWidth() / 2, b2dbody.getPosition().y - getHeight() / 2 - 6 / LumberjackDef.PPM);
         setRegion(getFrame(dt));
     }
 
@@ -162,6 +162,8 @@ public class Lumberjack extends Sprite {
         fdef.filter.maskBits = LumberjackDef.GROUND_BIT | LumberjackDef.COIN_BIT | LumberjackDef.BRICK_BIT | LumberjackDef.ENEMY_BIT | LumberjackDef.OBJECT_BIT | LumberjackDef.GOAL_BIT ;
 
         fdef.shape = shape;
+        b2dbody.createFixture(fdef).setUserData(this);
+        shape.setPosition(new Vector2(0, -14 / LumberjackDef.PPM));
         b2dbody.createFixture(fdef).setUserData(this);
 
         EdgeShape head = new EdgeShape();
