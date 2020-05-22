@@ -22,8 +22,9 @@ public class MarioBros extends Game {
 	public static final short OBJECT_BIT = 32;
 	public static final short ENEMY_BIT = 64;
 	public static final short ITEM_BIT = 256;
-	public static final short MARIO_HEAD_BIT = 512;
-	public SpriteBatch batch;
+	public static final short GOAL_BIT = 512;
+    public static final short MARIO_HEAD_BIT = 128;
+    public SpriteBatch batch;
 
     /* WARNING Using AssetManager in a static way can cause issues, especially on Android.
 	Instead you may want to pass around Assetmanager to those the classes that need it.
@@ -37,13 +38,10 @@ public class MarioBros extends Game {
 		batch = new SpriteBatch();
 		manager = new AssetManager();
 		manager.load("audio/music/doom.ogg", Music.class);
+        manager.load("audio/music/levelcomplete.ogg", Music.class);
 		manager.load("audio/sounds/coin.wav", Sound.class);
 		manager.load("audio/sounds/bump.wav", Sound.class);
 		manager.load("audio/sounds/breakblock.wav", Sound.class);
-		manager.load("audio/sounds/powerup_spawn.wav", Sound.class);
-		manager.load("audio/sounds/powerup.wav", Sound.class);
-		manager.load("audio/sounds/powerdown.wav", Sound.class);
-		manager.load("audio/sounds/stomp.wav", Sound.class);
 		manager.load("audio/sounds/mariodie.wav", Sound.class);
 		manager.finishLoading();
 

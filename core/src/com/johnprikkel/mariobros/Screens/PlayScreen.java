@@ -13,20 +13,14 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.johnprikkel.mariobros.Sprites.Enemies.Enemy;
-import com.johnprikkel.mariobros.Sprites.Items.Item;
-import com.johnprikkel.mariobros.Sprites.Items.ItemDef;
-import com.johnprikkel.mariobros.Sprites.Items.Mushroom;
 import com.johnprikkel.mariobros.MarioBros;
 import com.johnprikkel.mariobros.Scenes.Hud;
 import com.johnprikkel.mariobros.Sprites.Mario;
 import com.johnprikkel.mariobros.Tools.B2WorldCreator;
 import com.johnprikkel.mariobros.Tools.WorldContactListener;
-
-import java.util.concurrent.LinkedBlockingQueue;
 
 public class PlayScreen implements Screen {
     private com.johnprikkel.mariobros.MarioBros game;
@@ -36,8 +30,6 @@ public class PlayScreen implements Screen {
     private com.johnprikkel.mariobros.Scenes.Hud hud;
     private com.johnprikkel.mariobros.Sprites.Mario player;
     private Music music;
-    private Array<Item> items;
-    private LinkedBlockingQueue<ItemDef> itemsToSpawn;
 
     private TmxMapLoader maploader;
     private TiledMap map;
@@ -71,22 +63,6 @@ public class PlayScreen implements Screen {
         music.setLooping(true);
         music.play();
 
-        items = new Array<Item>();
-        itemsToSpawn = new LinkedBlockingQueue<ItemDef>();
-
-    }
-
-    public void spawnItem(ItemDef idef){
-        itemsToSpawn.add(idef);
-    }
-
-    public void handleSpawnItems(){
-        if(!itemsToSpawn.isEmpty()){
-            ItemDef idef = itemsToSpawn.poll();
-            if(idef.type == Mushroom.class){
-                items.add(new com.johnprikkel.mariobros.Sprites.Items.Mushroom(this, idef.position.x, idef.position.y));
-            }
-        }
     }
 
     public TextureAtlas getAtlas() {
@@ -98,7 +74,7 @@ public class PlayScreen implements Screen {
     }
 
     public void handleInput(float dt) {
-        if (player.currentState != com.johnprikkel.mariobros.Sprites.Mario.State.DEAD) {
+        if (player.currentState != com.johnprikkel.mariobros.Sprites.Mario.State.DEAD || player.currentState != com.johnprikkel.mariobros.Sprites.Mario.State.WON) {
             if (Gdx.input.isKeyJustPressed(Input.Keys.UP))
                 player.b2dbody.applyLinearImpulse(new Vector2(0, 4f), player.b2dbody.getWorldCenter(), true);
             if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT) && player.b2dbody.getLinearVelocity().x <= 2)
@@ -108,13 +84,8 @@ public class PlayScreen implements Screen {
         }
     }
 
-    public void checkGameOver(){
-
-    }
-
     public void update(float dt){
         handleInput(dt);
-        handleSpawnItems();
 
         world.step(1/60f, 6, 2);
         player.update(dt);
@@ -123,9 +94,6 @@ public class PlayScreen implements Screen {
             if(enemy.getX() < player.getX() + 224 / MarioBros.PPM)
                 enemy.b2dbody.setActive(true);
         }
-
-        for(Item item : items)
-            item.update(dt);
 
         hud.update(dt);
 
@@ -152,8 +120,6 @@ public class PlayScreen implements Screen {
         player.draw(game.batch);
         for(Enemy enemy : creator.getGoombas())
             enemy.draw(game.batch);
-        for(Item item : items)
-            item.draw(game.batch);
         game.batch.end();
 
         game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
@@ -163,6 +129,19 @@ public class PlayScreen implements Screen {
             game.setScreen(new GameOverScreen(game));
             dispose();
         }
+
+        if(winner()){
+            game.setScreen(new VictoryScreen(game));
+            dispose();
+        }
+    }
+
+
+    public boolean winner(){
+        if(player.currentState == Mario.State.WON) {
+            return true;
+        }
+        return false;
     }
 
     public boolean gameOver(){

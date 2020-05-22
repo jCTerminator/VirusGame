@@ -56,6 +56,8 @@ public abstract class InteractiveTileObject {
         fixture.setFilterData(filter);
     }
 
+    public abstract void hitGoal(Mario mario);
+
     public TiledMapTileLayer.Cell getCell() {
         TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(1);
         return layer.getCell(((int)(body.getPosition().x * com.johnprikkel.mariobros.MarioBros.PPM / 16)), (int)(body.getPosition().y * MarioBros.PPM / 16));

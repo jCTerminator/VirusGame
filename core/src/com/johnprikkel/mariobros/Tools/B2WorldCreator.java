@@ -10,11 +10,12 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
+import com.johnprikkel.mariobros.MarioBros;
 import com.johnprikkel.mariobros.Screens.PlayScreen;
 import com.johnprikkel.mariobros.Sprites.Enemies.Goomba;
 import com.johnprikkel.mariobros.Sprites.TileObjects.Brick;
 import com.johnprikkel.mariobros.Sprites.TileObjects.Coin;
-import com.johnprikkel.mariobros.MarioBros;
+import com.johnprikkel.mariobros.Sprites.TileObjects.Goal;
 
 public class B2WorldCreator {
     private Array<Goomba> goombas;
@@ -67,12 +68,27 @@ public class B2WorldCreator {
 
            new Coin(screen, object);
         }
-
         //create all goombas
         goombas = new Array<Goomba>();
         for(MapObject object : map.getLayers().get(6).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
             goombas.add(new Goomba(screen, rect.getX() / com.johnprikkel.mariobros.MarioBros.PPM, rect.getY() / MarioBros.PPM));
+        }
+
+        for(MapObject object : map.getLayers().get(7).getObjects().getByType(RectangleMapObject.class)){
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+
+            bdef.type = BodyDef.BodyType.StaticBody;
+            bdef.position.set((rect.getX() + rect.getWidth()/2) / com.johnprikkel.mariobros.MarioBros.PPM, (rect.getY() + rect.getHeight()/2) / com.johnprikkel.mariobros.MarioBros.PPM);
+
+            body = world.createBody(bdef);
+
+            shape.setAsBox(rect.getWidth()/2 / com.johnprikkel.mariobros.MarioBros.PPM, rect.getHeight()/2 / com.johnprikkel.mariobros.MarioBros.PPM);
+            fdef.shape = shape;
+            fdef.filter.categoryBits = com.johnprikkel.mariobros.MarioBros.OBJECT_BIT;
+            body.createFixture(fdef);
+
+            new Goal(screen, object);
         }
     }
 

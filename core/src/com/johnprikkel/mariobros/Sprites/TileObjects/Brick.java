@@ -16,12 +16,14 @@ public class Brick extends InteractiveTileObject {
 
     @Override
     public void onHeadHit(Mario mario) {
-        if (mario.isBig()) {
             setCategoryFilter(com.johnprikkel.mariobros.MarioBros.DESTROYED_BIT);
             getCell().setTile(null);
             Hud.addScore(200);
             com.johnprikkel.mariobros.MarioBros.manager.get("audio/sounds/breakblock.wav", Sound.class).play();
-        }
-        MarioBros.manager.get("audio/sounds/bump.wav", Sound.class).play();
+    }
+
+    @Override
+    public void hitGoal(Mario mario) {
+
     }
 }
