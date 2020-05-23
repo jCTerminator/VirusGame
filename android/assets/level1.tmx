@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="right-down" width="240" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="208">
+<map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="right-down" width="240" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="210">
  <tileset firstgid="1" name="tileset_gutter" tilewidth="16" tileheight="16" spacing="2" margin="1" tilecount="924" columns="33">
   <image source="tileset_gutter.png" width="594" height="504"/>
   <tile id="0">
@@ -150,7 +150,7 @@
   <object id="160" x="16" y="0" width="3808" height="15.6667"/>
   <object id="161" x="3824" y="0" width="16" height="192"/>
  </objectgroup>
- <objectgroup id="4" name="Pipes">
+ <objectgroup id="4" name="Pipes" visible="0">
   <object id="61" x="3553.67" y="128" width="62" height="64"/>
   <object id="62" x="3521.33" y="145" width="32" height="46.3333"/>
  </objectgroup>
@@ -178,7 +178,7 @@
   <object id="83" x="2096" y="64" width="16" height="16"/>
   <object id="84" x="2736" y="128" width="16" height="16"/>
  </objectgroup>
- <objectgroup id="6" name="Bricks">
+ <objectgroup id="6" name="Bricks" visible="0">
   <object id="85" x="2752" y="128" width="16.3333" height="16"/>
   <object id="86" x="2720" y="128" width="16" height="16"/>
   <object id="87" x="2704" y="128" width="16" height="16"/>
@@ -237,23 +237,20 @@
   <object id="139" x="512" y="176" width="16" height="16"/>
   <object id="140" x="672" y="176" width="16" height="16"/>
   <object id="141" x="832" y="176" width="16" height="16"/>
-  <object id="142" x="2784" y="176" width="16" height="16"/>
-  <object id="143" x="560" y="176" width="16" height="16"/>
-  <object id="166" x="2031" y="175" width="16" height="16"/>
-  <object id="195" x="3191.25" y="182.75"/>
-  <object id="196" x="3514" y="144"/>
-  <object id="197" x="2920.25" y="162"/>
-  <object id="198" x="2567" y="172.5"/>
-  <object id="199" x="2376.25" y="177.25"/>
-  <object id="200" x="2239.25" y="181.5"/>
-  <object id="201" x="2081.5" y="118.25"/>
-  <object id="202" x="1740.5" y="180"/>
-  <object id="203" x="1435.5" y="63.75"/>
+  <object id="166" x="2019.75" y="171.75" width="16" height="16"/>
+  <object id="195" x="3120.25" y="176.25"/>
+  <object id="197" x="2861.5" y="174"/>
+  <object id="198" x="2622.75" y="178.5"/>
+  <object id="200" x="2274.75" y="83.25"/>
+  <object id="201" x="2136" y="43"/>
+  <object id="202" x="1849.5" y="181.75"/>
+  <object id="203" x="1561" y="180.5"/>
   <object id="204" x="1187.25" y="125.5"/>
   <object id="205" x="956" y="180" height="0.25"/>
-  <object id="206" x="733" y="179.5"/>
+  <object id="208" x="3322.75" y="180.25"/>
+  <object id="209" x="3426.75" y="179.25"/>
  </objectgroup>
- <objectgroup id="8" name="Goal">
+ <objectgroup id="8" name="Goal" visible="0">
   <object id="172" x="3703.67" y="182.667"/>
  </objectgroup>
 </map>
