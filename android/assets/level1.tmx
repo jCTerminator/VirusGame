@@ -123,14 +123,14 @@
  <imagelayer id="9" name="city" offsetx="-160" offsety="0">
   <image source="city_background_night2.png" width="4000" height="205"/>
  </imagelayer>
- <layer id="2" name="Graphic Layer" width="240" height="13">
-  <data encoding="base64" compression="zlib">
-   eJztmbmSEzEQhs1KhEBKAvsIpJsYNnXxEGQUpPsM8BiGkHtJB4+TjTiKI+R4geXYfLkC1Iy63O7ROZJmDDuu+ssejbrVavVnaeyDrcnkoIBuiFGjRpVWFzZtrwfK30OlPdmde7ClKvHdEjp2lxhy+OC6LcK1I1eC6+un4kTtUbE+UpQ6bs74ce36nH+MuvJrYxrm+kj5fGzxa6ttl3Iy2eW7o2uMpvv3VF7ud8g5r0cTt/jd6atdU327lJtJzEFILKF8dp0H1qqPX6rUXISsd1/8wmvovSknv13nUDJ+zm/MXmzaf0tyGsJv6rh9xo+89s1vKM8591+uqYNt1x6dW6Y9L/f4U7Wuly26Is19od2VI5SNS7CN4ZeOS69pLH/F2ktyPYRiWCxxdk6psxL80lcfPJ40xe63vv33JCv2LLxJ/Jp8ldx/R/XDL67lyO5m85taB/8TvzPZaOg4NoHhoZnIzUwfMaTyG8qXj91nwu3D5RtsFxn4NT0zQduuNN/LzbDv3I79cjBvfGZMmNuuxWbK/OGawXjwzp9/8TNf4zeq7a3WOw/rOKbpXq1st2RbIewsRft3oFj+pizfsc/lMCbGAapFPL++tYzld65iuKN117M2N2Wjl6rfK913ru1K7x0pbNqYo/eQX9vvwDn5HUqute1jPz4j12sMaudcQP3PDfVpaispiP2sQab4OdOcX9//iCHsUm4xD0+Vniu9ECtWuR9k95NofOxrO+r7UF1/Lsh0KEu8n8mG8uv7P4fbf1Fz/ErmeV42GpJR1xxuiUa+veJQzyt3/dsYpAzwOq7U/SekzrCfqY2ykvp/ENrD+BD7BaWLBm1bYrcx6eI35HsW++D890keQO+VPjj4/Uj2XWoLPiv9fqzevzv4hfP2b6Vv+ux9RPouDXa17l+LFUcw1kyu2qgq0g+E53tTvmbsTLSn+/Pap+Mhpz/U55/6uiLtnGE+Lo2ZPnvQ9sqSP1eNLES7rWL+gV8+X34exHnRda+IDbYtWJ+aXf8SbXa3yXjABGUY48U4+NmQ80v3YD7/HbkeD58njZPPA2oN+UV2ffzSsWtDfmmOsO3SpH0mp30hF1eZLazjkbDza2L+NWlfinV20ZY+I41qnhOvnW6UkhvqJ9XXv65cOR3Vzusf+0vgbw==
-  </data>
- </layer>
  <layer id="10" name="start" width="240" height="13" offsetx="-160" offsety="0">
   <data encoding="base64" compression="zlib">
    eJztw0EJAAAIBLD7mNP+LazgU2GDJQAAAAAAAAAAAAAAP3TtAvcMkRAD6Q==
+  </data>
+ </layer>
+ <layer id="2" name="Graphic Layer" width="240" height="13">
+  <data encoding="base64" compression="zlib">
+   eJztmbmSEzEQhs1KhEBKAvsIpJsYNnXxEGQUpPsM8BiGkHtJB4+TjTiKI+R4geXYfLkC1Iy63O7ROZJmDDuu+ssejbrVavVnaeyDrcnkoIBuiFGjRpVWFzZtrwfK30OlPdmde7ClKvHdEjp2lxhy+OC6LcK1I1eC6+un4kTtUbE+UpQ6bs74ce36nH+MuvJrYxrm+kj5fGzxa6ttl3Iy2eW7o2uMpvv3VF7ud8g5r0cTt/jd6atdU327lJtJzEFILKF8dp0H1qqPX6rUXISsd1/8wmvovSknv13nUDJ+zm/MXmzaf0tyGsJv6rh9xo+89s1vKM8591+uqYNt1x6dW6Y9L/f4U7Wuly26Is19od2VI5SNS7CN4ZeOS69pLH/F2ktyPYRiWCxxdk6psxL80lcfPJ40xe63vv33JCv2LLxJ/Jp8ldx/R/XDL67lyO5m85taB/8TvzPZaOg4NoHhoZnIzUwfMaTyG8qXj91nwu3D5RtsFxn4NT0zQduuNN/LzbDv3I79cjBvfGZMmNuuxWbK/OGawXjwzp9/8TNf4zeq7a3WOw/rOKbpXq1st2RbIewsRft3oFj+pizfsc/lMCbGAapFPL++tYzld65iuKN117M2N2Wjl6rfK913ru1K7x0pbNqYo/eQX9vvwDn5HUqute1jPz4j12sMaudcQP3PDfVpaispiP2sQab4OdOcX9//iCHsUm4xD0+Vniu9ECtWuR9k95NofOxrO+r7UF1/Lsh0KEu8n8mG8uv7P4fbf1Fz/ErmeV42GpJR1xxuiUa+veJQzyt3/dsYpAzwOq7U/SekzrCfqY2ykvp/ENrD+BD7BaWLBm1bYrcx6eI35HsW++D890keQO+VPjj4/Uj2XWoLPiv9fqzevzv4hfP2b6Vv+ux9RPouDXa17l+LFUcw1kyu2qgq0g+E53tTvmbsTLSn+/Pap+Mhpz/U55/6uiLtnGE+Lo2ZPnvQ9sqSP1eNLES7rWL+gV8+X34exHnRda+IDbYtWJ+aXf8SbXa3yXjABGUY48U4+NmQ80v3YD7/HbkeD58njZPPA2oN+UV2ffzSsWtDfmmOsO3SpH0mp30hF1eZLazjkbDza2L+NWlfinV20ZY+I41qnhOvnW6UkhvqJ9XXv65cOR3Vzusf+0vgbw==
   </data>
  </layer>
  <objectgroup id="3" name="Ground">
